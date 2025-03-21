@@ -41,11 +41,7 @@ WeatherWise is a simple yet powerful weather application that provides you with 
     *   Get your API key from your OpenWeatherMap account dashboard.
     *   Replace `"YOUR_API_KEY"` with your actual API key in the `APIkey` variable within the code (usually in the main form's code-behind file).
 
-    ```
-    // Example (replace with your actual API key)
-    private string APIkey = "YOUR_API_KEY";
-    ```
-
+  
 4.  **Build and Run:**
 
     *   Press `Ctrl + Shift + B` to build the project.
@@ -65,8 +61,6 @@ WeatherWise is a simple yet powerful weather application that provides you with 
 *   **API:** OpenWeatherMap API
 *   **JSON Parsing:** Newtonsoft.Json (Json.NET)
 
-## 🖼️ UI Screenshots
-Add a section with some screenshots, replace the links with your actual image links.
 
 *Main Screen*
 
@@ -92,13 +86,7 @@ Contributions are welcome! Please follow these steps:
 3.  Make your changes and commit them with descriptive messages.
 4.  Submit a pull request.
 
-## 📜 License
 
-This project is licensed under the [MIT License](link_to_license_file) - see the [LICENSE.md](link_to_license_file) file for details.
-
-## ✉️ Contact
-
-[Your Name] - [Your Email]
 
 ## 👏 Acknowledgements
 
