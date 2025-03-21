@@ -1,6 +1,6 @@
 ﻿namespace Weather_Application
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.TBCity = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -42,9 +42,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labWindSpeed = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.picIcon = new System.Windows.Forms.PictureBox();
             this.FLP = new System.Windows.Forms.FlowLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -209,16 +209,6 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "Wind Speed:";
             // 
-            // picIcon
-            // 
-            this.picIcon.BackColor = System.Drawing.Color.Transparent;
-            this.picIcon.Location = new System.Drawing.Point(68, 141);
-            this.picIcon.Name = "picIcon";
-            this.picIcon.Size = new System.Drawing.Size(91, 46);
-            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picIcon.TabIndex = 13;
-            this.picIcon.TabStop = false;
-            // 
             // FLP
             // 
             this.FLP.AutoScroll = true;
@@ -230,16 +220,28 @@
             this.FLP.WrapContents = false;
             this.FLP.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
-            // Form1
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(68, 131);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(134, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(865, 629);
+            this.ClientSize = new System.Drawing.Size(1081, 629);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labSunrise);
             this.Controls.Add(this.FLP);
-            this.Controls.Add(this.picIcon);
             this.Controls.Add(this.labPressure);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.labWindSpeed);
@@ -253,10 +255,10 @@
             this.Controls.Add(this.TBCity);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Search";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,8 +279,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labWindSpeed;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox picIcon;
         private System.Windows.Forms.FlowLayoutPanel FLP;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

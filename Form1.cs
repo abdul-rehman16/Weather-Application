@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 
+
 namespace Weather_Application
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        double lon;
+        double lat;
+
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -42,33 +39,47 @@ namespace Weather_Application
             getForecast();
         }
 
-        double lon;
-        double lat;
 
-        void getWeather()
-        {
-            using (WebClient webClient = new WebClient())
-            {
-                string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}",TBCity.Text, APIkey);
-                var json = webClient.DownloadString(url);
-                WeatherInfo.root Info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
+        
+         void getWeather()
+         {
+             using (WebClient webClient = new WebClient())
+             {
+                 
+                if (string.IsNullOrWhiteSpace(TBCity.Text))
+                {
+                    MessageBox.Show("Please enter a city name.", "City Name Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                picIcon.ImageLocation = "https://openweathermap.org/img/wn/" + Info.weather[0].icon + ".png";
+                 string url = string.Format("https://api.openweathermap.org/data/2.5/weather?q={0}&appid={1}",TBCity.Text, APIkey);
+                 var json = webClient.DownloadString(url);
+                 WeatherInfo.root Info = JsonConvert.DeserializeObject<WeatherInfo.root>(json);
 
-                labCondition.Text = Info.weather[0].main;
-                labDetails.Text = Info.weather[0].main;
-                labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
-                labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
-                labWindSpeed.Text = Info.wind.speed.ToString("0.0")+"m/s";
-                labPressure.Text = Info.main.pressure.ToString("0.0")+"hpa";
+                 if (Info == null || Info.weather.Count == 0)
+                {
+                    MessageBox.Show("City not found or invalid city name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                 //picIcon.ImageLocation = "https://openweathermap.org/img/wn/" + Info.weather[0].icon + ".png";
 
 
-                lon = Info.coord.lon;
-                lat = Info.coord.lat;
-                SaveToCSV(Info);
+                 labCondition.Text = Info.weather[0].main;
+                 labDetails.Text = Info.weather[0].main;
+                 labSunset.Text = convertDateTime(Info.sys.sunset).ToShortTimeString();
+                 labSunrise.Text = convertDateTime(Info.sys.sunrise).ToShortTimeString();
+                 labWindSpeed.Text = Info.wind.speed.ToString("0.0")+"m/s";
+                 labPressure.Text = Info.main.pressure.ToString("0.0")+"hpa";
 
-            }
-        }
+
+                 lon = Info.coord.lon;
+                 lat = Info.coord.lat;
+                 SaveToCSV(Info);
+
+             }
+         }
+         
 
         DateTime convertDateTime(long sec)
         {
@@ -90,7 +101,9 @@ namespace Weather_Application
                 for (int i = 0; i < 8; i++) 
                 {
                     FUC = new ForecastUC();
-                    FUC.picWeatherIcon.ImageLocation = "https://openweathermap.org/img/wn/" + forecastInfo.Daily[i].Weather[0].Icon + "@2x.png";
+                    FUC.picWeatherIcon.ImageLocation = "Icon\\weather-app.png";
+                   
+
                     FUC.labMainWeather.Text = forecastInfo.Daily[i].Weather[0].Main;
                     FUC.labWeatherDescription.Text = forecastInfo.Daily[i].Weather[0].Description;
                     FUC.labDT.Text = convertDateTime(forecastInfo.Daily[i].Dt).DayOfWeek.ToString();

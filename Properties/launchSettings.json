@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+        "Weather Application": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "API_KEY": "162e72664391e3a07bd2f605a368385e"
+            }
+        }
+    }
+}
